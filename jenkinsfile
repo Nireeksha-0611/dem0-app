@@ -1,0 +1,28 @@
+pipeline {
+ agent any
+
+ tools {
+     maven 'Maven'
+     jdk 'JDK25'
+}
+
+stages {
+
+    stage('Checkout') {
+        steps {
+             git branch: 'main',
+                 url: 'https://github.com/Nireeksha-0611/ven.git' ,
+                 credentialsId: 'github-token
+        }
+    }   
+
+ stage('Build') {
+     steps {
+         sh 'mvn clean compile'
+    }
+}
+}
+}
+
+
+ 
